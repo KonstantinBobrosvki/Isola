@@ -80,17 +80,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Game_field\Game_field.csproj">
-      <Project>{cbcddff0-be63-4779-aa0e-1ac4991a7003}</Project>
-      <Name>Game_field</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Game_logic\Game_logic.csproj">
       <Project>{53ed1370-fa85-4114-bde6-ccc3c17b9820}</Project>
       <Name>Game_logic</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Isola\Start_screen.csproj">
-      <Project>{69cb642d-e0cc-4c72-a1e2-0af8719926c6}</Project>
-      <Name>Start_screen</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

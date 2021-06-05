@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Game_logic;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +17,7 @@ namespace WindowsFormsApp1
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new WinnerForm());
+            Application.Run(new WinnerForm(new Player("sjkdahg")));
         }
     }
 }

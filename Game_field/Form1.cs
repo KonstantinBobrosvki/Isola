@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Game_logic;
+using WindowsFormsApp1;
 
 namespace Game_field
 {
@@ -33,7 +34,7 @@ namespace Game_field
             this.Controls.Add(panel);*/
             InitializeComponent();
             var tempo = Controller.Board.Size/100;
-            Game_field = DrawGrid<Button>(Controller.Board.Size, Controller.Board.Size, new Size(tempo, tempo), (button) =>
+            Game_field = DrawGrid<Button>(Controller.Board.Size, Controller.Board.Size, new Size(100, 100), (button) =>
             {
 
                 var tag = (int[])button.Tag;
@@ -66,7 +67,10 @@ namespace Game_field
 
         private void Player_Lose(object sender, EventArgs e)
         {
-            MessageBox.Show(Controller.Current_Player.Name + " lose");
+            var fdf = new WinnerForm(Controller.Current_Player);
+            fdf.Show();
+            this.Hide();
+            fdf.FormClosed += (s, g) => this.Close();
         }
 
         private void Active_Player_Change(object sender,EventArgs e)
@@ -77,10 +81,10 @@ namespace Game_field
         }
         private void Active_State_Change(object sender, EventArgs e)
         {
-            string toadd = "BLOCK";
+            string toadd = "Блокиране";
 
             if (Controller.Current_State == GameController.Turn_State.Move)
-                toadd = "MOVE";
+                toadd = "Местене";
 
             label2.Text = "Действие: " + toadd;
 
@@ -97,13 +101,13 @@ namespace Game_field
                 var p = Controller.Current_Player;
                 if (Math.Sqrt(Math.Pow((x- p.X), 2) + Math.Pow((y - p.Y), 2)) > 1.6)
                 {
-                    MessageBox.Show("BIG DISTANCE");
+                    MessageBox.Show("Не можеш да се преместиш там");
                     return;
                 }
                 if(Controller.Board[x, y] != Game_board.Tile_State.Free)
                 {
 
-                    MessageBox.Show("Blocked");
+                    MessageBox.Show("Недостъпно поле за блокиране");
                     return;
                 }
                 Game_field.Controls[Current.X + Current.Y * Controller.Board.Size].BackColor = Color.White;
@@ -114,7 +118,7 @@ namespace Game_field
             {
                 if (Controller.Board[x, y] != Game_board.Tile_State.Free)
                 {
-                    MessageBox.Show("Blocked");
+                    MessageBox.Show("Недостъпно поле за блокиране");
                     return;
                 }
 
@@ -157,6 +161,11 @@ namespace Game_field
             }
 
             return result;
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

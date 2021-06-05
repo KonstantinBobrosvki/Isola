@@ -78,7 +78,7 @@ namespace Isola
             }
             else if (parsedSize > 50 || parsedSize <= 1 || parsedSize % 2 == 0)
             {
-                MessageBox.Show("Невалидно игрално поле");
+                MessageBox.Show("Невалиден размер на поле");
                 return;
             }
             else if (int.TryParse(name1.Text,out parsedName) && int.TryParse(name2.Text, out parsedName))

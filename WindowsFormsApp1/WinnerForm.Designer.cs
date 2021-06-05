@@ -92,6 +92,7 @@ namespace WindowsFormsApp1
             this.Controls.Add(this.label1);
             this.Name = "WinnerForm";
             this.Text = "Победител";
+            this.Load += new System.EventHandler(this.WinnerForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

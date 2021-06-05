@@ -85,6 +85,10 @@
       <Project>{53ed1370-fa85-4114-bde6-ccc3c17b9820}</Project>
       <Name>Game_logic</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WindowsFormsApp1\Winner_screen.csproj">
+      <Project>{c6eb63f9-fe85-47c3-9989-715b23be70b7}</Project>
+      <Name>Winner_screen</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
