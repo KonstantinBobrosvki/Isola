@@ -29,9 +29,12 @@ namespace Game_logic
             Player_Two = two;
 
             Random rnd = new Random();
-           
 
-            while(Player_One.X==Player_Two.X && Player_Two.Y == Player_One.Y)
+            Current_Player = Player_One;
+
+            Board = board;
+
+            while (Player_One.X==Player_Two.X && Player_Two.Y == Player_One.Y)
             {
                 Player_One.X = rnd.Next(0, Board.Size);
                 Player_One.Y = rnd.Next(0, Board.Size);
@@ -40,9 +43,7 @@ namespace Game_logic
             }
             
 
-            Current_Player = Player_One;
-
-            Board = board;
+            
         }
 
         public void BlocTile(int x,int y)
