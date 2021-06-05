@@ -29,6 +29,7 @@ namespace Isola
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.Title = new System.Windows.Forms.Label();
             this.name1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -39,6 +40,8 @@ namespace Isola
             this.size = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.labelHowToPlay = new System.Windows.Forms.Label();
+            this.labelInstructions = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // Title
@@ -51,7 +54,6 @@ namespace Isola
             this.Title.Size = new System.Drawing.Size(290, 104);
             this.Title.TabIndex = 0;
             this.Title.Text = "Изола";
-            this.Title.Click += new System.EventHandler(this.label1_Click);
             // 
             // name1
             // 
@@ -62,7 +64,6 @@ namespace Isola
             this.name1.Name = "name1";
             this.name1.Size = new System.Drawing.Size(256, 49);
             this.name1.TabIndex = 1;
-            this.name1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label1
             // 
@@ -74,7 +75,6 @@ namespace Isola
             this.label1.Size = new System.Drawing.Size(166, 44);
             this.label1.TabIndex = 2;
             this.label1.Text = "Играч 1:";
-            this.label1.Click += new System.EventHandler(this.label1_Click_1);
             // 
             // label2
             // 
@@ -98,7 +98,6 @@ namespace Isola
             this.label3.Size = new System.Drawing.Size(83, 38);
             this.label3.TabIndex = 6;
             this.label3.Text = "Име";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label4
             // 
@@ -120,7 +119,6 @@ namespace Isola
             this.name2.Name = "name2";
             this.name2.Size = new System.Drawing.Size(256, 49);
             this.name2.TabIndex = 4;
-            this.name2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // size
             // 
@@ -131,7 +129,6 @@ namespace Isola
             this.size.Name = "size";
             this.size.Size = new System.Drawing.Size(196, 49);
             this.size.TabIndex = 7;
-            this.size.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // label5
             // 
@@ -143,7 +140,6 @@ namespace Isola
             this.label5.Size = new System.Drawing.Size(350, 44);
             this.label5.TabIndex = 8;
             this.label5.Text = "Размер на полето:";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // button1
             // 
@@ -158,11 +154,37 @@ namespace Isola
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // labelHowToPlay
+            // 
+            this.labelHowToPlay.AutoSize = true;
+            this.labelHowToPlay.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelHowToPlay.Location = new System.Drawing.Point(12, 9);
+            this.labelHowToPlay.Name = "labelHowToPlay";
+            this.labelHowToPlay.Size = new System.Drawing.Size(178, 29);
+            this.labelHowToPlay.TabIndex = 10;
+            this.labelHowToPlay.Text = "Как се играе?";
+            this.labelHowToPlay.MouseLeave += new System.EventHandler(this.labelHowToPlayLeave);
+            this.labelHowToPlay.MouseHover += new System.EventHandler(this.labelHowToPlayHover);
+            // 
+            // labelInstructions
+            // 
+            this.labelInstructions.BackColor = System.Drawing.Color.White;
+            this.labelInstructions.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelInstructions.Location = new System.Drawing.Point(12, 38);
+            this.labelInstructions.Name = "labelInstructions";
+            this.labelInstructions.Size = new System.Drawing.Size(660, 352);
+            this.labelInstructions.TabIndex = 11;
+            this.labelInstructions.Text = resources.GetString("labelInstructions.Text");
+            this.labelInstructions.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelInstructions.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1412, 665);
+            this.Controls.Add(this.labelInstructions);
+            this.Controls.Add(this.labelHowToPlay);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.size);
@@ -176,7 +198,6 @@ namespace Isola
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "Начало";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -194,6 +215,8 @@ namespace Isola
         private System.Windows.Forms.TextBox size;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label labelHowToPlay;
+        private System.Windows.Forms.Label labelInstructions;
     }
 }
 
