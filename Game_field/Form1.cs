@@ -32,8 +32,9 @@ namespace Game_field
             panel.Left = width / 4;
             this.Controls.Add(panel);*/
             InitializeComponent();
-            var tempo = Controller.Board.Size/100;
-            Game_field = DrawGrid<Button>(Controller.Board.Size, Controller.Board.Size, new Size(tempo, tempo), (button) =>
+            AutoScroll = true;
+            var sizef = Math.Max(25,400 / controller.Board.Size);
+            Game_field = DrawGrid<Button>(Controller.Board.Size, Controller.Board.Size, new Size(sizef, sizef), (button) =>
             {
 
                 var tag = (int[])button.Tag;
@@ -51,11 +52,14 @@ namespace Game_field
                 button.Click += grid_Button_Clikc;
             });
 
-            Game_field.Location = new Point(500, 200);
-
+            Game_field.Location = new Point(100, 200);
+            Game_field.AutoScroll = true;
 
             Active_Player_Change(null, null);
             Active_State_Change(null, null);
+            Game_field.Size = new Size(this.Width - 150, this.ClientRectangle.Height - 300);
+
+             Resize+=(g,gf)=> Game_field.Size = new Size(this.Width - 150, this.ClientRectangle.Height - 300);
 
             Controller.Current_Player_Changed += Active_Player_Change;
             Controller.Current_State_Changed += Active_State_Change;
