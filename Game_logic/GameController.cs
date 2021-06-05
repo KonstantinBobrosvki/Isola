@@ -31,6 +31,7 @@ namespace Game_logic
             Random rnd = new Random();
 
             Current_Player = Player_One;
+            Current_State = Turn_State.Move;
 
             Board = board;
 
@@ -56,6 +57,15 @@ namespace Game_logic
         {
             if (Current_State != Turn_State.Block)
                 throw new Exception("NOT BLOCK STATE");
+
+            if (x > 50 || x < 0 || y > 50 || y < 0)
+                throw new ArgumentOutOfRangeException();
+
+            if (Board[x, y]!= Game_board.Tile_State.Free)
+                throw new Exception("NOT Free cell");
+
+            Board[x, y] = Game_board.Tile_State.Blocked;
+
             ChangeState();
             ChangePlayer();
             
@@ -70,6 +80,18 @@ namespace Game_logic
                 throw new ArgumentOutOfRangeException();
 
             Player p = Current_Player;
+
+           
+            
+            if(Math.Sqrt(Math.Pow((x - p.X), 2) + Math.Pow((y - p.Y), 2))>1.6)
+            {
+                throw new ArgumentOutOfRangeException("Distance error");
+
+            }
+            if (Board[x, y]!= Game_board.Tile_State.Free)
+            {
+                throw new ArgumentOutOfRangeException("Distance error");
+            }
 
             Board[p.X, p.Y] = Game_board.Tile_State.Free;
 
@@ -117,7 +139,8 @@ namespace Game_logic
                 {
                     if (Current_Player.X + x_offset < 0 || Current_Player.Y + y_offset < 0)
                         continue;
-                  var cell= Board[Current_Player.X + x_offset, Current_Player.Y + y_offset];
+
+                   var cell= Board[Current_Player.X + x_offset, Current_Player.Y + y_offset];
                     if (cell == Game_board.Tile_State.Free)
                         return false;
 
