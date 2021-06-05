@@ -113,7 +113,7 @@ namespace Game_field
                 if(Controller.Board[x, y] != Game_board.Tile_State.Free)
                 {
 
-                    MessageBox.Show("Недостъпно поле за блокиране");
+                    MessageBox.Show("Недостъпно поле за местене");
                     return;
                 }
                 Game_field.Controls[Current.X + Current.Y * Controller.Board.Size].BackColor = Color.White;
