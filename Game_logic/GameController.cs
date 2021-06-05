@@ -38,12 +38,18 @@ namespace Game_logic
             {
                 Player_One.X = rnd.Next(0, Board.Size);
                 Player_One.Y = rnd.Next(0, Board.Size);
-                Player_Two.X = rnd.Next(0, Board.Size);
-                Player_One.Y = rnd.Next(0, Board.Size);
-            }
-            
 
-            
+              
+
+                Player_Two.X = rnd.Next(0, Board.Size);
+                Player_Two.Y = rnd.Next(0, Board.Size);
+
+               
+
+            }
+            Board[Player_One.X, Player_One.Y] = Game_board.Tile_State.Player;
+            Board[Player_Two.X, Player_Two.Y] = Game_board.Tile_State.Player;
+
         }
 
         public void BlocTile(int x,int y)
