@@ -28,6 +28,18 @@ namespace Game_logic
             Player_One = one;
             Player_Two = two;
 
+            Random rnd = new Random();
+           
+
+            while(Player_One.X==Player_Two.X && Player_Two.Y == Player_One.Y)
+            {
+                Player_One.X = rnd.Next(0, Board.Size);
+                Player_One.Y = rnd.Next(0, Board.Size);
+                Player_Two.X = rnd.Next(0, Board.Size);
+                Player_One.Y = rnd.Next(0, Board.Size);
+            }
+            
+
             Current_Player = Player_One;
 
             Board = board;
@@ -96,6 +108,8 @@ namespace Game_logic
             {
                 for (int y_offset = -1; y_offset < 2; y_offset++)
                 {
+                    if (Current_Player.X + x_offset < 0 || Current_Player.Y + y_offset < 0)
+                        continue;
                   var cell= Board[Current_Player.X + x_offset, Current_Player.Y + y_offset];
                     if (cell == Game_board.Tile_State.Free)
                         return false;
