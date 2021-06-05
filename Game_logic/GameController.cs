@@ -139,8 +139,9 @@ namespace Game_logic
                 {
                     if (Current_Player.X + x_offset < 0 || Current_Player.Y + y_offset < 0)
                         continue;
-
-                   var cell= Board[Current_Player.X + x_offset, Current_Player.Y + y_offset];
+                    if(Current_Player.X + x_offset >=Board.Size || Current_Player.Y + y_offset >= Board.Size)
+                        continue;
+                    var cell= Board[Current_Player.X + x_offset, Current_Player.Y + y_offset];
                     if (cell == Game_board.Tile_State.Free)
                         return false;
 

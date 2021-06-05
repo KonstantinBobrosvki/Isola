@@ -36,7 +36,7 @@ namespace Game_field
             {
 
                 var tag = (int[])button.Tag;
-
+               
                 if (Controller.Board[tag[0], tag[1]] == Game_board.Tile_State.Player)
                 {
                     if (Controller.Player_One.X == tag[0] && Controller.Player_One.Y == tag[1])
