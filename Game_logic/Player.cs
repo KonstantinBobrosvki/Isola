@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace Game_logic
 {
-    public class Class1
+    public class Player
     {
+        public string Name { get; }
+        public Player(string name)
+        {
+            Name = name;
+        }
+
     }
 }
