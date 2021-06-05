@@ -71,7 +71,7 @@ namespace Game_field
 
         private void Player_Lose(object sender, EventArgs e)
         {
-            var fdf = new WinnerForm(Controller.Current_Player);
+            var fdf = new WinnerForm();
             fdf.Show();
             this.Hide();
             fdf.FormClosed += (s, g) => this.Close();

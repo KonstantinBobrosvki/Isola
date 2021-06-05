@@ -84,6 +84,10 @@
       <Project>{53ed1370-fa85-4114-bde6-ccc3c17b9820}</Project>
       <Name>Game_logic</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Isola\Start_screen.csproj">
+      <Project>{69cb642d-e0cc-4c72-a1e2-0af8719926c6}</Project>
+      <Name>Start_screen</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

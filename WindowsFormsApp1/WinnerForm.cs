@@ -21,7 +21,10 @@ namespace WindowsFormsApp1
 
         private void buttonNewGame_Click(object sender, EventArgs e)
         {
-            //старт
+
+            this.Hide();
+            var openNewGame = new Isola.Form1();
+            openNewGame.Show();
         }
 
         private void buttonClose_Click(object sender, EventArgs e)
