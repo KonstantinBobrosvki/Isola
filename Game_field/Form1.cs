@@ -32,7 +32,8 @@ namespace Game_field
             panel.Left = width / 4;
             this.Controls.Add(panel);*/
             InitializeComponent();
-            Game_field = DrawGrid<Button>(Controller.Board.Size, Controller.Board.Size, new Size(Controller.Board.Size * 20, Controller.Board.Size * 20), (button) =>
+            var tempo = Controller.Board.Size/100;
+            Game_field = DrawGrid<Button>(Controller.Board.Size, Controller.Board.Size, new Size(tempo, tempo), (button) =>
             {
 
                 var tag = (int[])button.Tag;
