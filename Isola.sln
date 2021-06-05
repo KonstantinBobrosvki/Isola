@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Game_field", "Game_field\Ga
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Game_logic", "Game_logic\Game_logic.csproj", "{53ED1370-FA85-4114-BDE6-CCC3C17B9820}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Winner_screen", "WindowsFormsApp1\Winner_screen.csproj", "{C6EB63F9-FE85-47C3-9989-715B23BE70B7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{53ED1370-FA85-4114-BDE6-CCC3C17B9820}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{53ED1370-FA85-4114-BDE6-CCC3C17B9820}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{53ED1370-FA85-4114-BDE6-CCC3C17B9820}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6EB63F9-FE85-47C3-9989-715B23BE70B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6EB63F9-FE85-47C3-9989-715B23BE70B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6EB63F9-FE85-47C3-9989-715B23BE70B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6EB63F9-FE85-47C3-9989-715B23BE70B7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
