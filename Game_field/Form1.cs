@@ -71,7 +71,8 @@ namespace Game_field
 
         private void Player_Lose(object sender, EventArgs e)
         {
-            var openWinnerForm = new WinnerForm(Controller.Current_Player);
+            var another = Controller.Current_Player == Controller.Player_One ? Controller.Player_Two : Controller.Player_One;
+            var openWinnerForm = new WinnerForm(another);
             openWinnerForm.FormClosed += (s, g) => this.Close();
 
             openWinnerForm.Show();
@@ -82,7 +83,7 @@ namespace Game_field
         {
             
             label1.Text = "Играч: " + Controller.Current_Player.Name;
-            label1.ForeColor = Active_player_Color;
+            label1.ForeColor = Active_player_Color; 
         }
         private void Active_State_Change(object sender, EventArgs e)
         {
