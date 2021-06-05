@@ -87,10 +87,10 @@ namespace Isola
                 return;
             }
             
-            var fdf = new Game_field.Form1(new Game_logic.GameController(new Player(name1.Text), new Game_logic.Player(name2.Text), new Game_board(parsedSize)));
-            fdf.Show();
+            var startGame = new Game_field.Form1(new Game_logic.GameController(new Player(name1.Text), new Game_logic.Player(name2.Text), new Game_board(parsedSize)));
+            startGame.Show();
             this.Hide();
-            fdf.FormClosed += (s, g) => this.Close();
+            startGame.FormClosed += (s, g) => this.Close();
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)

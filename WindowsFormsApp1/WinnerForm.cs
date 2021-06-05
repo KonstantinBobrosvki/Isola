@@ -24,6 +24,7 @@ namespace WindowsFormsApp1
 
             this.Hide();
             var openNewGame = new Isola.Form1();
+            openNewGame.FormClosed += (fd, dsadd) => this.Close();
             openNewGame.Show();
         }
 

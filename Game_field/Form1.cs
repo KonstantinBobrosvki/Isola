@@ -71,10 +71,11 @@ namespace Game_field
 
         private void Player_Lose(object sender, EventArgs e)
         {
-            var fdf = new WinnerForm();
-            fdf.Show();
+            var openWinnerForm = new WinnerForm(Controller.Current_Player);
+            openWinnerForm.FormClosed += (s, g) => this.Close();
+
+            openWinnerForm.Show();
             this.Hide();
-            fdf.FormClosed += (s, g) => this.Close();
         }
 
         private void Active_Player_Change(object sender,EventArgs e)
