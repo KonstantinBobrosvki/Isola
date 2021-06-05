@@ -25,6 +25,23 @@ namespace Game_logic
                 throw new ArgumentException("Size is not correct");
 
             Board = new Tile_State[size, size];
+            for (int i = 0; i < size; i++)
+            {
+                for (int j = 0; j < size; j++)
+                {
+                    Board[i, j] = Tile_State.Free;
+                }
+            }
+        }
+
+        public Tile_State this[int x,int y]
+        {
+            get {
+                return Board[x, y];
+            }
+            set {
+                Board[x, y] = value;
+            }
         }
     }
 }
