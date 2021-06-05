@@ -25,6 +25,7 @@ namespace Game_logic
                 throw new ArgumentException("Size is not correct");
 
             Board = new Tile_State[size, size];
+            Size = size;
             for (int i = 0; i < size; i++)
             {
                 for (int j = 0; j < size; j++)
