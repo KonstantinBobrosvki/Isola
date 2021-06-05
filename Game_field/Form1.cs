@@ -13,10 +13,16 @@ namespace Game_field
 {
     public partial class Form1 : Form
     {
-
-        static GameController controller = new GameController(new Player("Stamat"), new Player("Kostq"), new Game_board(5));
-        public Form1()
+        GameController Controller;
+        Panel Game_field;
+        Player Current => Controller.Current_Player;
+        private Color Player_One_color = Color.Red;
+        private Color Player_Two_color = Color.Blue;
+        private Color Blocked_Cell = Color.Gray;
+        private Color Active_player_Color=> Controller.Current_Player == Controller.Player_One ? Player_One_color : Player_Two_color;
+        public Form1(GameController controller)
         {
+            Controller = controller;
             this.WindowState = FormWindowState.Maximized;
             /*int width = Screen.PrimaryScreen.Bounds.Width;
             int height = Screen.PrimaryScreen.Bounds.Height;
@@ -26,23 +32,99 @@ namespace Game_field
             panel.Left = width / 4;
             this.Controls.Add(panel);*/
             InitializeComponent();
-            var grid = DrawGrid<Button>(controller.Board.Size, controller.Board.Size, new Size(controller.Board.Size * 20, controller.Board.Size * 20), (button) =>
+            Game_field = DrawGrid<Button>(Controller.Board.Size, Controller.Board.Size, new Size(Controller.Board.Size * 20, Controller.Board.Size * 20), (button) =>
             {
+
                 var tag = (int[])button.Tag;
 
-                if (controller.Board[tag[0], tag[1]] == Game_board.Tile_State.Player)
-                    button.BackColor = Color.Red;
+                if (Controller.Board[tag[0], tag[1]] == Game_board.Tile_State.Player)
+                {
+                    if (Controller.Player_One.X == tag[0] && Controller.Player_One.Y == tag[1])
+                        button.BackColor = Player_One_color;
+                    else
+                        button.BackColor = Player_Two_color;
+                }
                 else
-                    button.BackColor = Color.Blue;
+                    button.BackColor = Color.White;
 
-             button.Click += (o, a) => {
-                   
-                };
+                button.Click += grid_Button_Clikc;
             });
-            
-            grid.Location = new Point(500, 200);
 
-            Controls.Add(grid);
+            Game_field.Location = new Point(500, 200);
+
+
+            Active_Player_Change(null, null);
+            Active_State_Change(null, null);
+
+            Controller.Current_Player_Changed += Active_Player_Change;
+            Controller.Current_State_Changed += Active_State_Change;
+            Controller.Current_State_Lose += Player_Lose;
+
+            Controls.Add(Game_field);
+        }
+
+        private void Player_Lose(object sender, EventArgs e)
+        {
+            MessageBox.Show(Controller.Current_Player.Name + " lose");
+        }
+
+        private void Active_Player_Change(object sender,EventArgs e)
+        {
+            
+            label1.Text = "Играч: " + Controller.Current_Player.Name;
+            label1.ForeColor = Active_player_Color;
+        }
+        private void Active_State_Change(object sender, EventArgs e)
+        {
+            string toadd = "BLOCK";
+
+            if (Controller.Current_State == GameController.Turn_State.Move)
+                toadd = "MOVE";
+
+            label2.Text = "Действие: " + toadd;
+
+        }
+
+        private void grid_Button_Clikc(object sender,EventArgs e)
+        {
+            var tag = (int[])((Button)sender).Tag;
+            Button me = (Button)sender;
+            var x = tag[0];
+            var y = tag[1];
+            if (Controller.Current_State == GameController.Turn_State.Move)
+            {
+                var p = Controller.Current_Player;
+                if (Math.Sqrt(Math.Pow((x- p.X), 2) + Math.Pow((y - p.Y), 2)) > 1.6)
+                {
+                    MessageBox.Show("BIG DISTANCE");
+                    return;
+                }
+                if(Controller.Board[x, y] != Game_board.Tile_State.Free)
+                {
+
+                    MessageBox.Show("Blocked");
+                    return;
+                }
+                Game_field.Controls[Current.X + Current.Y * Controller.Board.Size].BackColor = Color.White;
+                me.BackColor = Active_player_Color;
+                Controller.Player_Move(x, y);
+            }
+            else
+            {
+                if (Controller.Board[x, y] != Game_board.Tile_State.Free)
+                {
+                    MessageBox.Show("Blocked");
+                    return;
+                }
+
+                Controller.BlocTile(tag[0], tag[1]);
+
+                me.BackColor = Blocked_Cell;
+            }
+
+         
+
+           
         }
 
         public static Panel DrawGrid<T>(int columns, int rows, Size size, Action<T> action) where T : Control, new()
@@ -64,11 +146,8 @@ namespace Game_field
                     temp.Size = size;
                     temp.Location = p;
                     temp.Tag = new int[] { column, row };
-                    var scale = controller.Board.Board[row, column];
-                    if (scale is Game_board.Tile_State.Blocked)
-                        temp.BackColor = Color.Red;
-                    else if (scale is Game_board.Tile_State.Player)
-                        temp.BackColor = Color.Blue;
+
+
                     action(temp);
                     result.Controls.Add(temp);
                     p = new Point(p.X + temp.Width + 1, p.Y);

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Game_logic;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +17,7 @@ namespace Game_field
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new Form1(new GameController(new Player("Stamat"), new Player("Kostq"), new Game_board(5))));
         }
     }
 }
